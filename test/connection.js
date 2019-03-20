@@ -59,7 +59,7 @@ describe('Connection', function() {
 
             var readEvents = 0;
 
-            var streamId = "$stats-0.0.0.0:2113";
+            var streamId = "$stats-127.0.0.1:2113";
             var fromEventNumber = -1;
             var maxCount = 10;
             var resolveLinkTos = false;
@@ -87,7 +87,7 @@ describe('Connection', function() {
 
             var readEvents = 0;
 
-            var streamId = "$stats-0.0.0.0:2113";
+            var streamId = "$stats-127.0.0.1:2113";
             var fromEventNumber = 0;
             var maxCount = 10;
             var resolveLinkTos = false;
