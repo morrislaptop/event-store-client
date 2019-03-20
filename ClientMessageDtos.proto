@@ -222,44 +222,6 @@ message SubscriptionDropped {
 	optional SubscriptionDropReason reason = 1 [default = Unsubscribed];
 }
 
-message NotHandled {
-	
-	enum NotHandledReason {
-		NotReady = 0;
-		TooBusy = 1;
-		NotMaster = 2;
-	}
-	
-	required NotHandledReason reason = 1;
-	optional bytes additional_info = 2;
-
-	message MasterInfo {
-		required string external_tcp_address = 1;
-		required int32 external_tcp_port = 2;
-		required string external_http_address = 3;
-		required int32 external_http_port = 4;
-		optional string external_secure_tcp_address = 5;
-		optional int32 external_secure_tcp_port = 6;
-	}
-}
-
-message ScavengeDatabase {
-}
-
-message ScavengeDatabaseCompleted {
-	
-	enum ScavengeResult {
-		Success = 0;
-		InProgress = 1;
-		Failed = 2;
-	}
-	
-	required ScavengeResult result = 1;
-	optional string error = 2;
-	required int32 total_time_ms = 3;
-	required int64 total_space_saved = 4;
-}
-
 message CreatePersistentSubscription {
 	required string subscription_group_name = 1;
 	required string event_stream_id = 2;
@@ -373,4 +335,42 @@ message PersistentSubscriptionConfirmation {
 
 message PersistentSubscriptionStreamEventAppeared {
 	required ResolvedIndexedEvent event = 1;
+}
+
+message NotHandled {
+	
+	enum NotHandledReason {
+		NotReady = 0;
+		TooBusy = 1;
+		NotMaster = 2;
+	}
+	
+	required NotHandledReason reason = 1;
+	optional bytes additional_info = 2;
+
+	message MasterInfo {
+		required string external_tcp_address = 1;
+		required int32 external_tcp_port = 2;
+		required string external_http_address = 3;
+		required int32 external_http_port = 4;
+		optional string external_secure_tcp_address = 5;
+		optional int32 external_secure_tcp_port = 6;
+	}
+}
+
+message ScavengeDatabase {
+}
+
+message ScavengeDatabaseCompleted {
+	
+	enum ScavengeResult {
+		Success = 0;
+		InProgress = 1;
+		Failed = 2;
+	}
+	
+	required ScavengeResult result = 1;
+	optional string error = 2;
+	required int32 total_time_ms = 3;
+	required int64 total_space_saved = 4;
 }
